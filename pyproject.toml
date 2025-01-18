@@ -1,0 +1,129 @@
+[project]
+name = "ProjectTemplate"
+version = "0.0.1"
+requires-python = ">=3.11"  # Change version if needed
+dependencies = [
+    "pip==24.3.1",
+]
+
+[project.optional-dependencies]
+installer = ["uv==0.5.18"]
+dev_tools = [
+    # pre-commit
+    "cfgv==3.4.0",
+    "distlib==0.3.9",
+    "filelock==3.16.1",
+    "identify==2.6.5",
+    "nodeenv==1.9.1",
+    "platformdirs==4.3.6",
+    "pre-commit==4.0.1",
+    "pyyaml==6.0.2",
+    "virtualenv==20.28.1",
+    # mypy
+    "mypy==1.14.1",
+    "mypy-extensions==1.0.0",
+    "typing-extensions==4.12.2",
+    # ruff
+    "ruff==0.9.1",
+]
+test_tools = []  # add pytest with plugins if needed
+
+[tool.mypy]
+python_version = "3.11"  # Must be same version with requires-python
+check_untyped_defs = true  # Enable type-checking in untyped functions/methods
+show_error_codes = true  # Output error codes
+warn_unused_ignores = true  # Error about unused noqa comment:  # unused type: ignore [code]
+warn_return_any = true  # Error about returning Any from function that not return Any
+exclude = [".venv", "venv"]  # add files and directories that not need to check
+
+# Ruff settings: https://docs.astral.sh/ruff/settings/
+[tool.ruff]
+line-length = 79  # replace to 119 if needed
+extend-exclude = [".venv*", "venv*"]  # add files and directories that not need to check
+fix = true  # automatically fix rules, marked this emoji -> 🛠️ in https://docs.astral.sh/ruff/rules/
+show-fixes = true  # show where autofixes was processed
+
+[tool.ruff.lint]
+select = [
+    # Rules: https://docs.astral.sh/ruff/rules/
+    "A",  # flake8-builtins - shadowing buildins, have settings
+    "ANN",  # flake8-annotations - missing type annotations, have settings
+    "ARG",  # flake8-unused-arguments - unused arguments, have settings
+    # "ASYNC",  # flake8-async - async code, uncomment if needed
+    # "AIR",  # special rules for Apache Airflow, uncomment if needed
+    "B",  # flake8-bugbear - finding likely bugs and design problems, have settings
+    "BLE",  # flake8-blind-except - forbid using bare except, BaseException or Exception classes in except block,
+    # have settings
+    "C4",  # flake8-comprehensions - helps to write better list/set/dict comprehensions
+    # "C901",  # mccabe - detect cyclomatic complexity (count "if" statements, "for" and "while" cycles), uncomment if
+    # needed, have settings
+    "COM",  # flake8-commas - trailing comma mistakes
+    # "CPY",  # flake8-copyright - copyright, preview only
+    "D",  # pydocstyle - docstring conventions, some rules ignored, check below, have settings
+    # "DJ",  # flake8-django - special rules for Django, uncomment if needed
+    # "DOC",  # pydoclint - documenting arguments, returns, raises, etc. as docstring, preview only
+    # "DTZ",  # flake8-datetimez - forbid use datetime without time zone, uncomment if needed
+    "E",  # pycodestyle, errors - PEP8 basic rules, many rules in preview, have settings
+    # "EM",  # flake8-errmsg - define exception message in variable, uncomment if needed, have settings
+    # "ERA",  # eradicate - detect commented-out code, uncomment if needed
+    "EXE",  # flake8-executable - detect that executable permissions and shebangs of python files are correctly set
+    "F",  # Pyflakes - detect various errors in source code
+    # "FA",  # flake8-future-annotations - enforce use new annotations for Python 3.7 - 3.9, uncomment if needed
+    # "FAST",  # special rules for FastAPI, uncomment if needed
+    "FBT",  # flake8-boolean-trap - detect boolean trap which confusing code understanding, have settings
+    # "FIX",  # flake8-fixme - forbid commiting FIXME, TODO, HACK and XXX comments, uncomment if needed
+    "FLY",  # flynt - convert %-formatted and ''.format() strings to f-strings, not converts logging strings and
+    # template string variables
+    "FURB",  # refurb - refurbishing and modernizing python codebases, many rules in preview
+    "G",  # flake8-logging-format - logging format
+    "I",  # isort - sorting imports, have settings
+    "ICN",  # flake8-import-conventions - conventions about how import packages as aliases (import numpy as np)
+    "INP",  # flake8-no-pep420 - python packages must contain file __init__.py
+    # "INT",  # flake8-gettext - special rules for gettext module (I18N and L10N), uncomment if needed, have settings
+    "ISC",  # flake8-implicit-str-concat - check correct literal concatenation, have settings
+    "LOG",  # flake8-logging - special rules for logging
+    "N",  # pep8-naming - check PEP8 naming conventions, have settings
+    # "NPY",  # special rules for NumPy
+    # "PD",  # pandas-vet - special rules for pandasc
+    "PERF",  # perflint - check performance antipatterns
+    "PGH",  # pygrep-hooks - check various minor mistakes
+    "PIE",  # flake8-pie - also some misc. lints
+    "PLC",  # Pylint, conventions - static code analyser, convention rules
+    "PLE",  # Pylint, errors - static code analyser, detect code errors
+    "PLR",  # Pylint, refactor - static code analyser, detect code that can be refactored
+    "PLW",  # Pylint, warnings - static code analyser, detect less critical errors than in PLE
+    # "PT",  # flake8-pytest-style - special rules for pytest, uncomment if needed, have settings
+    "PTH",  # flake8-use-pathlib - forcing use pathlib module instead os module (os.path, os.mkdir, etc.)
+    # "PYI",  # flake8-pyi - special rules for stub files (.pyi), uncomment if needed
+    "Q",  # flake8-quotes - quotes style, have settings
+    "RET",  # flake8-return - checks return values
+    "RSE",  # flake8-raise - finds improvements for raise statements
+    "RUF",  # ruff-specific rules
+    # "S",  # flake8-bandit - security testing, uncomment if needed, have settings
+    "SLF",  # flake8-self - forbid access to private class members, have settings
+    # "SLOT",  # flake8-slots - forcing use __slots__ class attribute for subclasses of str, tuple and namedtuple,
+    # uncomment if needed
+    "SIM",  # flake8-simplify - helps simplify code
+    "T10",  # flake8-debugger - detects using breakpoint() (just to don't forget remove it after debugging)
+    # "T20",  # flake8-print - forbid using print and pprint (use logging instead), uncomment if needed
+    "TC",  # flake8-type-checking - forcing use TYPE_CHECKING block for imports that using only for type-checking
+    # "TD",  # flake8-todos - TODO's styling, uncomment if needed
+    "TID",  # flake8-tidy-imports - helps write tidier imports, have settings
+    "TRY",  # tryceratops - prevent exception handling antipatterns
+    "UP",  # pyupgrade - upgrade syntax for newer versions, have settings
+    "W",  # pycodestyle, warnings - PEP8 additional rules, have settings
+    "YTT",  # flake8-2020 - check for misuse of sys.version or sys.version_info
+]
+ignore = [
+    "D100",  # pydocstyle - undocument module
+    "D203",  # pydocstyle - blank line between class and docstring required, alternative for D211 which not allows this
+    # blank line
+    "D213",  # pydocstyle - first line of docstring must be empty, alternative for D212 where docstring summary must be
+    # on first line
+]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
