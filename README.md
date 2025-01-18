@@ -67,6 +67,20 @@ uv pip sync requirements.txt
 uv pip install -r pyproject.toml
 ```
 
+### Pre-commit hooks
+
+When you install `pre-commit` package, every time when you will commit your changes it will be checked hooks `ruff` and
+`mypy`. If they found errors in your code, they will show them and deny commit until you not fix them.
+
+If you want to add new pre-commit hook or disable one of them, you can change `.pre-commit-config.yaml`. Also, you can
+configure how they should run. Specific settings for `ruff` and `mypy` placed in `pyproject.toml`.
+
+To run pre-commit hooks manually, use this command:
+
+```bash
+.git/hooks/pre-commit
+```
+
 ## Roadmap
 
 - [X] First step
