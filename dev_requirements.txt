@@ -4,21 +4,21 @@ cfgv==3.4.0
     # via
     #   projecttemplate (pyproject.toml)
     #   pre-commit
-distlib==0.3.9
+distlib==0.4.0
     # via
     #   projecttemplate (pyproject.toml)
     #   virtualenv
-filelock==3.16.1
+filelock==3.18.0
     # via
     #   projecttemplate (pyproject.toml)
     #   virtualenv
-identify==2.6.5
+identify==2.6.12
     # via
     #   projecttemplate (pyproject.toml)
     #   pre-commit
-mypy==1.14.1
+mypy==1.17.1
     # via projecttemplate (pyproject.toml)
-mypy-extensions==1.0.0
+mypy-extensions==1.1.0
     # via
     #   projecttemplate (pyproject.toml)
     #   mypy
@@ -26,27 +26,29 @@ nodeenv==1.9.1
     # via
     #   projecttemplate (pyproject.toml)
     #   pre-commit
-pip==24.3.1
+pathspec==0.12.1
+    # via mypy
+pip==25.2
     # via projecttemplate (pyproject.toml)
-platformdirs==4.3.6
+platformdirs==4.3.8
     # via
     #   projecttemplate (pyproject.toml)
     #   virtualenv
-pre-commit==4.0.1
+pre-commit==4.2.0
     # via projecttemplate (pyproject.toml)
 pyyaml==6.0.2
     # via
     #   projecttemplate (pyproject.toml)
     #   pre-commit
-ruff==0.9.2
+ruff==0.12.7
     # via projecttemplate (pyproject.toml)
-typing-extensions==4.12.2
+typing-extensions==4.14.1
     # via
     #   projecttemplate (pyproject.toml)
     #   mypy
-uv==0.5.18
+uv==0.8.4
     # via projecttemplate (pyproject.toml)
-virtualenv==20.28.1
+virtualenv==20.33.0
     # via
     #   projecttemplate (pyproject.toml)
     #   pre-commit
